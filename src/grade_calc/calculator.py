@@ -34,7 +34,7 @@ class CompetencyGroup:
                     new_sources[competency] = other.competency_sources[competency]
 
         return CompetencyGroup(
-            name=f"{self.name} + {other.name}",
+            name=self.name,
             competencies=new_competencies,
             competency_sources=new_sources,
         )
@@ -72,7 +72,7 @@ class CompetencyGroup:
                 new_sources.pop(competency, None)
 
         return CompetencyGroup(
-            name=f"{self.name} - {other.name}",
+            name=self.name,
             competencies=new_competencies,
             competency_sources=new_sources,
         )

@@ -2,11 +2,15 @@ class Competency:
     key_map: dict[str, Competency] = {}
     max_name_length: int = 0
 
+    sort_order: int
+
     def __new__(cls, key: str, name: str):
         instance = super().__new__(cls)
 
         cls.key_map[key] = instance
         cls.max_name_length = max(cls.max_name_length, len(name))
+
+        instance.sort_order = len(cls.key_map) - 1
 
         return instance
 
@@ -24,6 +28,10 @@ class Competency:
     @classmethod
     def get_name(cls, key: str) -> str:
         return cls.key_map[key].name
+
+    @classmethod
+    def get_sort_order(cls, key: str) -> int:
+        return cls.key_map[key].sort_order
 
     @classmethod
     def get_max_name_length(cls) -> int:
